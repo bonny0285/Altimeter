@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--AltimeterVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AltimeterVC" customModule="FindAltitude" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OaX-MH-pCk">
+                                <rect key="frame" x="0.0" y="646" width="414" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="MwH-Fx-DvO"/>
+                                </constraints>
+                            </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="c247e913a0214313045a8a5c39f8522b" translatesAutoresizingMaskIntoConstraints="NO" id="dtX-yB-GpU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="646"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude: 50m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrk-jD-ffV">
+                                <rect key="frame" x="30" y="84" width="115" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error +/- 3m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXM-vX-7B2">
+                                <rect key="frame" x="46" y="113" width="83" height="20"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Climbed: 50m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoC-hS-9iX">
+                                <rect key="frame" x="266" y="84" width="118" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVi-nV-gg5">
+                                <rect key="frame" x="359" y="835" width="25" height="24"/>
+                                <connections>
+                                    <action selector="infoBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WZQ-IP-kaS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IoC-hS-9iX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="40" id="55q-s3-pBu"/>
+                            <constraint firstItem="dtX-yB-GpU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5yv-Bh-BCo"/>
+                            <constraint firstItem="OaX-MH-pCk" firstAttribute="top" secondItem="dtX-yB-GpU" secondAttribute="bottom" id="7kJ-aP-pE7"/>
+                            <constraint firstAttribute="bottom" secondItem="OaX-MH-pCk" secondAttribute="bottom" id="8VP-ew-avc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WVi-nV-gg5" secondAttribute="trailing" constant="10" id="F1P-9u-8CA"/>
+                            <constraint firstItem="dtX-yB-GpU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IUK-EE-eAc"/>
+                            <constraint firstItem="OaX-MH-pCk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MLk-b9-04X"/>
+                            <constraint firstItem="PXM-vX-7B2" firstAttribute="top" secondItem="Jrk-jD-ffV" secondAttribute="bottom" constant="5" id="YS2-yV-hWf"/>
+                            <constraint firstItem="Jrk-jD-ffV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="40" id="ZRT-8e-B2g"/>
+                            <constraint firstItem="OaX-MH-pCk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gii-bT-ZOO"/>
+                            <constraint firstItem="PXM-vX-7B2" firstAttribute="centerX" secondItem="Jrk-jD-ffV" secondAttribute="centerX" id="kY1-K1-PgQ"/>
+                            <constraint firstItem="Jrk-jD-ffV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="nuh-2Z-rbo"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="WVi-nV-gg5" secondAttribute="bottom" constant="3" id="pHV-LX-26G"/>
+                            <constraint firstItem="dtX-yB-GpU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yVy-ul-SoO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IoC-hS-9iX" secondAttribute="trailing" constant="10" id="ygX-1q-dYG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="altimeterLbl" destination="IoC-hS-9iX" id="TPZ-9a-xIS"/>
+                        <outlet property="altitudeLbl" destination="Jrk-jD-ffV" id="0WY-Hd-3k8"/>
+                        <outlet property="background" destination="dtX-yB-GpU" id="V4a-lt-9jr"/>
+                        <outlet property="gpsErrorLbl" destination="PXM-vX-7B2" id="8o2-3x-Rh3"/>
+                        <outlet property="mapView" destination="OaX-MH-pCk" id="fSN-ba-UyM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="102.45535714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="c247e913a0214313045a8a5c39f8522b" width="736" height="1308"/>
+    </resources>
+</document>
