@@ -13,7 +13,6 @@ import CoreMotion
 
 class AltimeterVC: UIViewController,MKMapViewDelegate {
     
-    
     //Outlet
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var background: UIImageView!
@@ -21,17 +20,12 @@ class AltimeterVC: UIViewController,MKMapViewDelegate {
     @IBOutlet var gpsErrorLbl: UILabel!
     @IBOutlet var altimeterLbl: UILabel!
     
-    
-    
-    
     //Variable
     let locationManager = CLLocationManager()
     let altimeter = CMAltimeter()
     var myalert = MyAlert()
     
-    
-    
-    
+    //MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,27 +36,23 @@ class AltimeterVC: UIViewController,MKMapViewDelegate {
         
     }
 
-    func showAppDetails(){
-        MyAlert.appVersion(on: self)
-    }
-    
-  
-    
     deinit {
         altimeter.stopRelativeAltitudeUpdates()
     }
     
-    
-    
+    //MARK: - Methods
+
+    func showAppDetails(){
+        MyAlert.appVersion(on: self)
+    }
     
     func setupLocationManager(){
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    
-    func checkLocationServices(){
-        if CLLocationManager.locationServicesEnabled(){
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
             //Setup our Location Manager
             setupLocationManager()
             checkLocationAuthorization()
@@ -71,9 +61,7 @@ class AltimeterVC: UIViewController,MKMapViewDelegate {
         }
     }
     
-    
-    
-    func checkLocationAuthorization(){
+    func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
             break
@@ -83,45 +71,42 @@ class AltimeterVC: UIViewController,MKMapViewDelegate {
             centerViewOnUserLocation()
             locationManager.startUpdatingLocation()
             startTrackingAltitudeChange()
-            break
+            
         case .denied:
             // Inform User how turn on location
             MyAlert.deniedAlert(on: self)
-            break
+            
         case .notDetermined:
             MyAlert.notDetermianteAlert(on: self)
             locationManager.requestWhenInUseAuthorization()
-            break
+            
         case .restricted:
             // Inform User how turn on location
             MyAlert.restrictedAlert(on: self)
-            break
+            
+        @unknown default:
+            print("UNKNOWN")
         }
     }
     
-    
-    
-    func centerViewOnUserLocation(){
-        if let location = locationManager.location?.coordinate{
-            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 8000, longitudinalMeters: 8000)
-            mapView.setRegion(region, animated: true)
-        }
+    func centerViewOnUserLocation() {
+        guard let location = locationManager.location?.coordinate else { return }
+        
+        let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 8000, longitudinalMeters: 8000)
+        mapView.setRegion(region, animated: true)
     }
     
-    
-    
-    
-    func startTrackingAltitudeChange(){
+    func startTrackingAltitudeChange() {
         guard CMAltimeter.isRelativeAltitudeAvailable() else {
             // Show Error Alert
             MyAlert.altimeterNotSupported(on: self)
             return
         }
+        
         let queue = OperationQueue()
         queue.qualityOfService = .background
         
-        
-        altimeter.startRelativeAltitudeUpdates(to: queue) { (altimeterData, error) in
+        altimeter.startRelativeAltitudeUpdates(to: queue) { altimeterData, error in
             if let altimeterData = altimeterData {
                 DispatchQueue.main.async {
                     let relativeAltitude = altimeterData.relativeAltitude as! Double
@@ -132,18 +117,16 @@ class AltimeterVC: UIViewController,MKMapViewDelegate {
         }
     }
     
-    
+    //MARK: - Actions
+
     @IBAction func infoBtnWasPressed(_ sender: Any) {
         showAppDetails()
     }
-    
-
 }
 
-
+//MARK: - CLLocationManagerDelegate
 
 extension AltimeterVC: CLLocationManagerDelegate{
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //When user change location
@@ -155,22 +138,11 @@ extension AltimeterVC: CLLocationManagerDelegate{
         
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 800, longitudinalMeters: 800)
-        
-        
-//        let altitude = location.altitude.rounded(toDecimalPlaces: 0)
-//        altitudeLbl.text = "Altitude: \(Int(altitude))m"
-//        gpsErrorLbl.text = "+/-     \(location.verticalAccuracy)m"
-        
-        
+
         mapView.setRegion(region, animated: true)
-        
-        
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        //When the authorization will change
-       // MyAlert.authorizationChanged(on: self)
         checkLocationAuthorization()
     }
 }
