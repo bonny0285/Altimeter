@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum AlertType {
+    case deniedAlert
+    case restrictedAlert
+    case notDeterminateAlert
+    case altimeterNotSupported
+    case authorizationChanged
+}
 
 struct MyAlert{
     
@@ -25,7 +32,7 @@ struct MyAlert{
         basicAlert(on: vc, whit: "Restricted Privacy" , message: "Please contatct the Administrator of your setting about the restriction")
     }
     
-    static func notDetermianteAlert(on vc: UIViewController) {
+    static func notDetermianateAlert(on vc: UIViewController) {
         basicAlert(on: vc, whit: "Not Determinate Location Setting", message: "Please agree to use your location if you want use this app")
     }
     

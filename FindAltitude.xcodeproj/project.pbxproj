@@ -15,6 +15,7 @@
 		B42E3153236B662200069388 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B42E3151236B662200069388 /* LaunchScreen.storyboard */; };
 		B42E315C236B78E900069388 /* RoundedDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E315B236B78E900069388 /* RoundedDouble.swift */; };
 		B42E3161236DA6CA00069388 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E3160236DA6CA00069388 /* Alert.swift */; };
+		B4A603B026A963810029ED4B /* LocationManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A603AF26A963810029ED4B /* LocationManagerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B42E3154236B662200069388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B42E315B236B78E900069388 /* RoundedDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedDouble.swift; sourceTree = "<group>"; };
 		B42E3160236DA6CA00069388 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		B4A603AF26A963810029ED4B /* LocationManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +62,8 @@
 		B42E3145236B661F00069388 /* FindAltitude */ = {
 			isa = PBXGroup;
 			children = (
+				B4A603AE26A9635F0029ED4B /* ViewModel */,
 				B42E315F236DA5F500069388 /* Model */,
-				B42E315E236DA5EE00069388 /* View */,
 				B42E315D236DA5E100069388 /* Controller */,
 				B42E315A236B78BF00069388 /* Extension */,
 				B42E3146236B661F00069388 /* AppDelegate.swift */,
@@ -90,19 +92,20 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		B42E315E236DA5EE00069388 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		B42E315F236DA5F500069388 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B42E3160236DA6CA00069388 /* Alert.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B4A603AE26A9635F0029ED4B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B4A603AF26A963810029ED4B /* LocationManagerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B42E314B236B661F00069388 /* AltimeterVC.swift in Sources */,
+				B4A603B026A963810029ED4B /* LocationManagerViewModel.swift in Sources */,
 				B42E3147236B661F00069388 /* AppDelegate.swift in Sources */,
 				B42E315C236B78E900069388 /* RoundedDouble.swift in Sources */,
 				B42E3161236DA6CA00069388 /* Alert.swift in Sources */,
